@@ -1,0 +1,52 @@
+sum        proc           3     2     2
+           sym            2     1     0
+           sym            2     2     0
+           sym            2     3     1
+           ldp       
+           lod            2     1
+           call       write
+           ldp       
+           lod            2     2
+           call       write
+           lod            2     1
+           lod            2     2
+           add       
+           ldc          100
+           add       
+           str            2     3
+           lod            2     3
+           ldc            1
+           eq        
+           fjp        $$0
+           ldc          100
+           str            2     3
+$$0        nop       
+           lod            2     3
+           ret       
+           ret       
+main       proc           1     2     2
+           sym            2     1     1
+           ldp       
+           ldc          100
+           call       write
+           ldc          333
+           str            2     1
+           lod            2     1
+           inc       
+           str            2     1
+           ldp       
+           lod            2     1
+           call       write
+           ldp       
+           ldc           10
+           ldc           20
+           call       sum
+           str            2     1
+           ldp       
+           lod            2     1
+           call       write
+           ret       
+           bgn            0
+           ldp       
+           call       main
+           end       
