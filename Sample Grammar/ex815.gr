@@ -1,0 +1,12 @@
+DIRECTIVE       BUILD_TREES -> ON;
+                LIST_STATES -> ON;
+                
+LEXICON         '%IDENT' => IDENT;
+
+SYNTAX S
+S -> L '=' R     => ASSIGN;
+  -> R;
+R -> L;
+L -> '*' R       => RIGHT;
+  -> '%IDENT';
+

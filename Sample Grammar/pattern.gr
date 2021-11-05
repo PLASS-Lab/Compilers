@@ -1,0 +1,28 @@
+DIRECTIVE       BUILD_TREES -> ON;
+                LIST_STATES -> ON;
+                
+LEXICON         '%instruction'  => INSTRUCTION;
+                '%param'        => PARAM;
+                '%eval_methods' => EVALCODE;
+
+
+SYNTAX pattern_description
+
+pattern_description    -> patterns                               => PATTERN_DESCRIPTION;
+patterns               -> pattern;
+                       -> pattern patterns;
+pattern                -> replacement_part 
+                          target_part 
+                          '%%' evaluation_method_part '%%'       => PATTERN;
+
+replacement_part       -> instr_code_sets                        => REPLACEMENT_PART;
+target_part            -> '::=' instr_code_sets                  => TARGET_PART;
+evaluation_method_part -> '%eval_methods'                        => EVALUATION_METHOD_PART;
+                       
+instr_code_sets        -> instr_code_set;
+                       -> instr_code_set instr_code_sets;
+instr_code_set         -> '%instruction' opt_parameters '/'      => INSTR_CODE_SET;
+opt_parameters         -> ;
+                       -> parameters;
+parameters             -> '%param';
+                       -> '%param' parameters;

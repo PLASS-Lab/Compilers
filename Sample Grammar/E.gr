@@ -1,0 +1,14 @@
+DIRECTIVE       BUILD_TREES -> ON;
+                LIST_STATES -> ON;
+                
+LEXICON         '%ident' => IDENT;
+                '%integer' => INT_CONST;
+
+SYNTAX E
+E -> E '+' T    => ADD;
+  -> T;
+T -> T '*' F    => MULT;
+  -> F;
+F -> '(' E ')'  => EXP;
+  -> '%ident';
+  -> '%integer';
