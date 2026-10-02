@@ -9,4 +9,3 @@ S -> L '=' R     => ASSIGN;
 R -> L;
 L -> '*' R       => RIGHT;
   -> '%IDENT';
-
